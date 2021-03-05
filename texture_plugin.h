@@ -1,7 +1,8 @@
 #pragma once
 #include "plugin.h"
 
-class HelloTrianglePlugin: public Plugin
+
+class TexturePlugin: public Plugin
 {
 public:
 	void Init();
@@ -33,10 +34,9 @@ private:
 	unsigned int fragmentShader;
 	const char* fragmentShaderSource = "#version 330 core\n"
 		"out vec4 FragColor;\n"
-		"uniform vec4 color;\n"
 		"void main()\n"
 		"{\n"
-		"    FragColor = color;\n"
+		"    FragColor = vec4(0.5, 0.5, 0.5, 1.0);\n"
 		"}\n\0";
 
 	unsigned int colorLocation;

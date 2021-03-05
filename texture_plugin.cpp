@@ -1,13 +1,13 @@
+#include "texture_plugin.h"
 #include <stdio.h>
 #include <GL/gl3w.h>
 
-#include "hello_triangle_plugin.h"
 #include "imgui.h"
 
-void HelloTrianglePlugin::Init()
+void TexturePlugin::Init()
 {
 	this->window = true;
-	this->color = (void *)(new ImVec4(0.3f, 0.8f, 0.1f, 1.0f));
+	this->color = (void*)(new ImVec4(0.3f, 0.8f, 0.1f, 1.0f));
 
 	// ±àÒëshader
 	this->vertexShader = this->CompileShader(this->vertexShaderSource, GL_VERTEX_SHADER);
@@ -31,20 +31,17 @@ void HelloTrianglePlugin::Init()
 	this->colorLocation = glGetUniformLocation(this->shaderProgram, "color");
 }
 
-void HelloTrianglePlugin::Run()
+void TexturePlugin::Run()
 {
 	glUseProgram(this->shaderProgram);
-	glUniform4f(this->colorLocation,
-		((ImVec4*)this->color)->x, ((ImVec4*)this->color)->y,
-		((ImVec4*)this->color)->z, ((ImVec4*)this->color)->w);
 	glBindVertexArray(this->VAO);
 	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 }
 
-void HelloTrianglePlugin::Window() 
+void TexturePlugin::Window()
 {
 	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoResize;
-	ImGui::Begin("Hello Triangle", &this->window, window_flags);	
+	ImGui::Begin("Texture", &this->window, window_flags);
 
 	ImGui::ColorEdit4("MyColor##2f", (float*)this->color, ImGuiColorEditFlags_Float);
 

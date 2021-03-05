@@ -28,11 +28,34 @@ public:
 		glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
 		if (!success) {
 			glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-			fprintf(stderr, "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n%s", infoLog);
+			fprintf(stderr, "ERROR::SHADER::COMPILATION_FAILED\n%s\n", infoLog);
 			return -1;
 		}
 		
 		return shader;
 	};
+
+	unsigned int LinkProgram(unsigned int shader1, unsigned int shader2) {
+		unsigned int program;
+		int success;
+		char infoLog[512];
+
+		program = glCreateProgram();
+	
+		glAttachShader(program, shader1);
+		glAttachShader(program, shader2);
+		glLinkProgram(program);
+
+		glGetProgramiv(program, GL_LINK_STATUS, &success);
+		if (!success) {
+			glGetProgramInfoLog(program, 512, nullptr, infoLog);
+			fprintf(stderr, "ERROR::PROGRAM::LINK_FAILED\n%s\n", infoLog);
+			return -1;
+		}
+
+		glDeleteShader(shader1);
+		glDeleteShader(shader2);
+		return program;
+	}
 };
 

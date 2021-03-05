@@ -8,6 +8,8 @@
 
 
 #include "hello_triangle_plugin.h"
+#include "texture_plugin.h"
+
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1900) && !defined(IMGUI_DISABLE_WIN32_FUNCTIONS)
 #pragma comment(lib, "legacy_stdio_definitions")
@@ -26,7 +28,8 @@ int main(int, char**)
 
     const char* glsl_version = "#version 130";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     GLFWwindow* window = glfwCreateWindow(1280, 720, "Dear ImGui GLFW OpenGL3", NULL, NULL);
     if (window == NULL)
@@ -54,13 +57,11 @@ int main(int, char**)
 
     bool load_plguins_window = true;
     int current_load_plugin = 0;
-    const char* items[] = { "Loading!!", "sssssssssss", "dddddddddddd"};
+    const char* items[] = { "01 Hello Triangles", "02 Texture"};
     Plugin* plugin = nullptr;
 
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    plugin = new HelloTrianglePlugin();
-    plugin->Init();
 
     while (!glfwWindowShouldClose(window))
     {
@@ -70,18 +71,25 @@ int main(int, char**)
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        ImGui::ShowDemoWindow(&load_plguins_window);
-
         if (load_plguins_window) {
             // ╪сть
-            ImGui::Begin("Load Plugins Window", &load_plguins_window);
+            ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoResize;
+            ImGui::Begin("Load Plugins Window", &load_plguins_window, window_flags);
             ImGui::Combo("", &current_load_plugin, items, IM_ARRAYSIZE(items));
             ImGui::End();
+
+            if (current_load_plugin == 0) {
+                plugin = new HelloTrianglePlugin();
+                plugin->Init();
+            }
+            else if (current_load_plugin == 1) {
+                plugin = new TexturePlugin();
+                plugin->Init();
+            }
+
         }
 
         plugin->Window();
-
-        plugin->Run();
 
         ImGui::Render();
         int display_w, display_h;
@@ -90,7 +98,9 @@ int main(int, char**)
         glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
         glClear(GL_COLOR_BUFFER_BIT);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
- 
+
+        plugin->Run();
+
         glfwSwapBuffers(window);
     }
 
