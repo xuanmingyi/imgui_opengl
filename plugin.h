@@ -2,6 +2,10 @@
 #include <GL/gl3w.h>
 #include <stdio.h>
 
+#include <map>
+#include <string>
+using namespace std;
+
 
 class Plugin
 {

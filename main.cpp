@@ -10,10 +10,33 @@
 #include "hello_triangle_plugin.h"
 #include "texture_plugin.h"
 
-
 #if defined(_MSC_VER) && (_MSC_VER >= 1900) && !defined(IMGUI_DISABLE_WIN32_FUNCTIONS)
 #pragma comment(lib, "legacy_stdio_definitions")
 #endif
+
+static map<int, Plugin*> plugins;
+
+Plugin* GetPlugin(int current_load_plugin) {
+    map<int, Plugin*>::iterator plugin = plugins.find(current_load_plugin);
+    Plugin* _plugin = nullptr;
+    if (plugin == plugins.end()) {
+        switch (current_load_plugin) {
+        case  0:
+            _plugin = new HelloTrianglePlugin();
+            _plugin->Init();
+            break;
+        case 1:
+            _plugin = new TexturePlugin();
+            _plugin->Init();
+            break;
+        }
+        plugins.insert(std::make_pair(current_load_plugin, _plugin));
+    }
+    else {
+        _plugin = (*plugin).second;
+    }
+    return _plugin;
+}
 
 static void glfw_error_callback(int error, const char* description)
 {
@@ -62,7 +85,6 @@ int main(int, char**)
 
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
@@ -71,23 +93,16 @@ int main(int, char**)
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+
+        ImGui::ShowDemoWindow(&load_plguins_window);
         if (load_plguins_window) {
             // ╪сть
             ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoResize;
             ImGui::Begin("Load Plugins Window", &load_plguins_window, window_flags);
             ImGui::Combo("", &current_load_plugin, items, IM_ARRAYSIZE(items));
             ImGui::End();
-
-            if (current_load_plugin == 0) {
-                plugin = new HelloTrianglePlugin();
-                plugin->Init();
-            }
-            else if (current_load_plugin == 1) {
-                plugin = new TexturePlugin();
-                plugin->Init();
-            }
-
         }
+        plugin = GetPlugin(current_load_plugin);
 
         plugin->Window();
 

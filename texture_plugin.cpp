@@ -40,10 +40,7 @@ void TexturePlugin::Run()
 
 void TexturePlugin::Window()
 {
-	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoResize;
-	ImGui::Begin("Texture", &this->window, window_flags);
-
-	ImGui::ColorEdit4("MyColor##2f", (float*)this->color, ImGuiColorEditFlags_Float);
+	ImGui::Begin("Texutre", &this->window);
 
 	ImGui::End();
 }
