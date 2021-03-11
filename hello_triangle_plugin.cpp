@@ -43,10 +43,5 @@ void HelloTrianglePlugin::Run()
 
 void HelloTrianglePlugin::Window() 
 {
-	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoResize;
-	ImGui::Begin("Hello Triangle", &this->window, window_flags);	
-
 	ImGui::ColorEdit4("MyColor##2f", (float*)this->color, ImGuiColorEditFlags_Float);
-
-	ImGui::End();
 }

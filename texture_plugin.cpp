@@ -40,7 +40,4 @@ void TexturePlugin::Run()
 
 void TexturePlugin::Window()
 {
-	ImGui::Begin("Texutre", &this->window);
-
-	ImGui::End();
 }

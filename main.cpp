@@ -93,18 +93,22 @@ int main(int, char**)
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-
-        ImGui::ShowDemoWindow(&load_plguins_window);
-        if (load_plguins_window) {
-            // ╪сть
-            ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoResize;
-            ImGui::Begin("Load Plugins Window", &load_plguins_window, window_flags);
-            ImGui::Combo("", &current_load_plugin, items, IM_ARRAYSIZE(items));
-            ImGui::End();
-        }
         plugin = GetPlugin(current_load_plugin);
 
-        plugin->Window();
+        //ImGui::ShowDemoWindow(&load_plguins_window);
+        if (load_plguins_window) {
+            // ╪сть
+            ImGui::SetNextWindowPos(ImVec2(25, 25));
+            ImGui::SetNextWindowSize(ImVec2(460, 400));
+            ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
+            ImGui::Begin("Load Plugins Window", &load_plguins_window, window_flags);
+            ImGui::Combo("", &current_load_plugin, items, IM_ARRAYSIZE(items));
+
+            plugin->Window();
+
+            ImGui::End();
+        }
+
 
         ImGui::Render();
         int display_w, display_h;
