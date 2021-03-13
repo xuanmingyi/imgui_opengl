@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_tables.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="imgui_impl_glfw.cpp" />
+    <ClCompile Include="imgui_impl_opengl3.cpp" />
+    <ClCompile Include="libs\gl3w\GL\gl3w.c" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="plugin.cpp">
+      <Filter>plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="texture_plugin.cpp">
+      <Filter>plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="hello_triangle_plugin.cpp">
+      <Filter>plugins</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui_impl_glfw.h" />
+    <ClInclude Include="imgui_impl_opengl3.h" />
+    <ClInclude Include="imstb\imstb_rectpack.h" />
+    <ClInclude Include="imstb\imstb_textedit.h" />
+    <ClInclude Include="imstb\imstb_truetype.h" />
+    <ClInclude Include="libs\gl3w\GL\gl3w.h" />
+    <ClInclude Include="libs\gl3w\GL\glcorearb.h" />
+    <ClInclude Include="libs\glfw\include\GLFW\glfw3.h" />
+    <ClInclude Include="libs\glfw\include\GLFW\glfw3native.h" />
+    <ClInclude Include="plugin.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="texture_plugin.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="hello_triangle_plugin.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="plugins">
+      <UniqueIdentifier>{0cc3d3f9-79f6-46c9-83e2-c7323aa0a3e1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

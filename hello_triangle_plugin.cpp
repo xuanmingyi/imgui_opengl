@@ -1,3 +1,5 @@
+#include <iostream>
+#include <fstream>
 #include <stdio.h>
 #include <GL/gl3w.h>
 
@@ -8,6 +10,19 @@ void HelloTrianglePlugin::Init()
 {
 	this->window = true;
 	this->color = (void *)(new ImVec4(0.3f, 0.8f, 0.1f, 1.0f));
+
+
+	std::ifstream t;
+	int length;
+	t.open("main.cpp");
+	t.seekg(0, std::ios::end);
+	length = t.tellg();
+	t.seekg(0, std::ios::beg);
+	auto buffer = new char[length];
+	t.read(buffer, length);
+	t.close();
+	std::cout << length << buffer << std::endl;
+
 
 	// ±àÒëshader
 	this->vertexShader = this->CompileShader(this->vertexShaderSource, GL_VERTEX_SHADER);
