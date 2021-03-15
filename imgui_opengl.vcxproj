@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\sin\source\repos\imgui_opengl\libs\glfw\include;C:\Users\sin\source\repos\imgui_opengl\libs\gl3w;C:\Users\sin\source\repos\imgui_opengl\imstb;C:\Users\sin\source\repos\imgui_opengl\imgui;$(IncludePath)</IncludePath>
-    <SourcePath>C:\Users\sin\source\repos\imgui_opengl\imgui;C:\Users\sin\source\repos\imgui_opengl\imstb;$(SourcePath)</SourcePath>
+    <IncludePath>libs\glfw\include;libs\gl3w;imstb;imgui;$(IncludePath)</IncludePath>
+    <SourcePath>imgui;imstb;$(SourcePath)</SourcePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
@@ -96,7 +96,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\sin\source\repos\imgui_opengl\libs\glfw\lib-vc2010-32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>libs\glfw\lib-vc2010-32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -159,7 +159,10 @@
     <ClInclude Include="libs\glfw\include\GLFW\glfw3.h" />
     <ClInclude Include="libs\glfw\include\GLFW\glfw3native.h" />
     <ClInclude Include="plugin.h" />
+    <ClInclude Include="shader.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="texture_plugin.h" />
+    <ClInclude Include="threed_plugin.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="hello_triangle_plugin.cpp" />
@@ -173,7 +176,9 @@
     <ClCompile Include="libs\gl3w\GL\gl3w.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="shader.cpp" />
     <ClCompile Include="texture_plugin.cpp" />
+    <ClCompile Include="threed_plugin.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

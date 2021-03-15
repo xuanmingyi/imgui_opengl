@@ -9,6 +9,8 @@
 
 #include "hello_triangle_plugin.h"
 #include "texture_plugin.h"
+#include "threed_plugin.h"
+
 
 #if defined(_MSC_VER) && (_MSC_VER >= 1900) && !defined(IMGUI_DISABLE_WIN32_FUNCTIONS)
 #pragma comment(lib, "legacy_stdio_definitions")
@@ -27,6 +29,10 @@ Plugin* GetPlugin(int current_load_plugin) {
             break;
         case 1:
             _plugin = new TexturePlugin();
+            _plugin->Init();
+            break;
+        case 2:
+            _plugin = new ThreeDPlugin();
             _plugin->Init();
             break;
         }
@@ -80,7 +86,7 @@ int main(int, char**)
 
     bool load_plguins_window = true;
     int current_load_plugin = 0;
-    const char* items[] = { "01 Hello Triangles", "02 Texture"};
+    const char* items[] = { "01 Hello Triangles", "02 Texture", "03 3D"};
     Plugin* plugin = nullptr;
 
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
@@ -103,9 +109,7 @@ int main(int, char**)
             ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
             ImGui::Begin("Load Plugins Window", &load_plguins_window, window_flags);
             ImGui::Combo("", &current_load_plugin, items, IM_ARRAYSIZE(items));
-
             plugin->Window();
-
             ImGui::End();
         }
 

@@ -19,6 +19,12 @@
     <ClCompile Include="hello_triangle_plugin.cpp">
       <Filter>plugins</Filter>
     </ClCompile>
+    <ClCompile Include="shader.cpp">
+      <Filter>plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="threed_plugin.cpp">
+      <Filter>plugins</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imgui\imconfig.h" />
@@ -40,6 +46,13 @@
       <Filter>plugins</Filter>
     </ClInclude>
     <ClInclude Include="hello_triangle_plugin.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="shader.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="threed_plugin.h">
       <Filter>plugins</Filter>
     </ClInclude>
   </ItemGroup>

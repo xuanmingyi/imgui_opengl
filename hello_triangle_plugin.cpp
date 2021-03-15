@@ -5,29 +5,14 @@
 
 #include "hello_triangle_plugin.h"
 #include "imgui.h"
+#include "shader.h"
+
 
 void HelloTrianglePlugin::Init()
 {
-	this->window = true;
+	P = new Program("shaders/hello_triangle/vertex.txt", "shaders/hello_triangle/fragment.txt");
+
 	this->color = (void *)(new ImVec4(0.3f, 0.8f, 0.1f, 1.0f));
-
-
-	std::ifstream t;
-	int length;
-	t.open("main.cpp");
-	t.seekg(0, std::ios::end);
-	length = t.tellg();
-	t.seekg(0, std::ios::beg);
-	auto buffer = new char[length];
-	t.read(buffer, length);
-	t.close();
-	std::cout << length << buffer << std::endl;
-
-
-	// ±àÒëshader
-	this->vertexShader = this->CompileShader(this->vertexShaderSource, GL_VERTEX_SHADER);
-	this->fragmentShader = this->CompileShader(this->fragmentShaderSource, GL_FRAGMENT_SHADER);
-	this->shaderProgram = this->LinkProgram(this->vertexShader, this->fragmentShader);
 
 	// ³õÊ¼»¯ VAO, VBO
 	glGenVertexArrays(1, &this->VAO);
@@ -43,16 +28,19 @@ void HelloTrianglePlugin::Init()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	this->colorLocation = glGetUniformLocation(this->shaderProgram, "color");
+	this->colorLocation = glGetUniformLocation(P->GetProgram(), "color");
 }
 
 void HelloTrianglePlugin::Run()
 {
-	glUseProgram(this->shaderProgram);
+	glUseProgram(P->GetProgram());
+
 	glUniform4f(this->colorLocation,
 		((ImVec4*)this->color)->x, ((ImVec4*)this->color)->y,
 		((ImVec4*)this->color)->z, ((ImVec4*)this->color)->w);
+
 	glBindVertexArray(this->VAO);
+
 	glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 }
 
