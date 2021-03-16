@@ -85,7 +85,7 @@ int main(int, char**)
     ImGui_ImplOpenGL3_Init(glsl_version);
 
     bool load_plguins_window = true;
-    int current_load_plugin = 0;
+    int current_load_plugin = 2;
     const char* items[] = { "01 Hello Triangles", "02 Texture", "03 3D"};
     Plugin* plugin = nullptr;
 
