@@ -55,6 +55,7 @@
     <ClInclude Include="threed_plugin.h">
       <Filter>plugins</Filter>
     </ClInclude>
+    <ClInclude Include="camera.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="plugins">
