@@ -49,6 +49,27 @@ static void glfw_error_callback(int error, const char* description)
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    cout << "key callback" << endl;
+}
+
+static void mouse_move_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    cout << "mouse move callback" << endl;
+}
+
+static void mouse_scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    cout << "mouse scroll callack" << endl;
+}
+
+static void do_movement()
+{
+    cout << "do movement" << endl;
+}
+
+
 int main(int, char**)
 {
     glfwSetErrorCallback(glfw_error_callback);
@@ -65,6 +86,11 @@ int main(int, char**)
         return 1;
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1); // Enable vsync
+
+    glfwSetKeyCallback(window, key_callback);
+    glfwSetCursorPosCallback(window, mouse_move_callback);
+    glfwSetScrollCallback(window, mouse_scroll_callback);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     bool err = gl3wInit() != 0;
 
@@ -137,3 +163,4 @@ int main(int, char**)
 
     return 0;
 }
+

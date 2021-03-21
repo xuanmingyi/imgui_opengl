@@ -1,65 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="imgui\imgui.cpp" />
-    <ClCompile Include="imgui\imgui_demo.cpp" />
-    <ClCompile Include="imgui\imgui_draw.cpp" />
-    <ClCompile Include="imgui\imgui_tables.cpp" />
-    <ClCompile Include="imgui\imgui_widgets.cpp" />
-    <ClCompile Include="imgui_impl_glfw.cpp" />
-    <ClCompile Include="imgui_impl_opengl3.cpp" />
-    <ClCompile Include="libs\gl3w\GL\gl3w.c" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="plugin.cpp">
+    <ClCompile Include="plugins\hello_triangle_plugin.cpp">
+      <Filter>plugins\01</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\texture_plugin.cpp">
+      <Filter>plugins\02</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\threed_plugin.cpp">
+      <Filter>plugins\03</Filter>
+    </ClCompile>
+    <ClCompile Include="plugins\plugin.cpp">
       <Filter>plugins</Filter>
     </ClCompile>
-    <ClCompile Include="texture_plugin.cpp">
+    <ClCompile Include="plugins\shader.cpp">
       <Filter>plugins</Filter>
     </ClCompile>
-    <ClCompile Include="hello_triangle_plugin.cpp">
-      <Filter>plugins</Filter>
-    </ClCompile>
-    <ClCompile Include="shader.cpp">
-      <Filter>plugins</Filter>
-    </ClCompile>
-    <ClCompile Include="threed_plugin.cpp">
-      <Filter>plugins</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="imgui\imconfig.h" />
-    <ClInclude Include="imgui\imgui.h" />
-    <ClInclude Include="imgui\imgui_internal.h" />
-    <ClInclude Include="imgui_impl_glfw.h" />
-    <ClInclude Include="imgui_impl_opengl3.h" />
-    <ClInclude Include="imstb\imstb_rectpack.h" />
-    <ClInclude Include="imstb\imstb_textedit.h" />
-    <ClInclude Include="imstb\imstb_truetype.h" />
-    <ClInclude Include="libs\gl3w\GL\gl3w.h" />
-    <ClInclude Include="libs\gl3w\GL\glcorearb.h" />
-    <ClInclude Include="libs\glfw\include\GLFW\glfw3.h" />
-    <ClInclude Include="libs\glfw\include\GLFW\glfw3native.h" />
-    <ClInclude Include="plugin.h">
-      <Filter>plugins</Filter>
-    </ClInclude>
-    <ClInclude Include="texture_plugin.h">
-      <Filter>plugins</Filter>
-    </ClInclude>
-    <ClInclude Include="hello_triangle_plugin.h">
-      <Filter>plugins</Filter>
-    </ClInclude>
-    <ClInclude Include="shader.h">
-      <Filter>plugins</Filter>
-    </ClInclude>
-    <ClInclude Include="stb_image.h" />
-    <ClInclude Include="threed_plugin.h">
-      <Filter>plugins</Filter>
-    </ClInclude>
-    <ClInclude Include="camera.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="plugins">
-      <UniqueIdentifier>{0cc3d3f9-79f6-46c9-83e2-c7323aa0a3e1}</UniqueIdentifier>
+      <UniqueIdentifier>{7ce9df07-ea7c-47a2-b84a-6e97c35bd228}</UniqueIdentifier>
     </Filter>
+    <Filter Include="plugins\01">
+      <UniqueIdentifier>{4bc9149f-9ea5-4678-9568-4f6152c5ab1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\02">
+      <UniqueIdentifier>{aabacc33-5982-46f7-96e4-2b400305ef9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugins\03">
+      <UniqueIdentifier>{86ad06fa-32b4-48a5-87c6-216b0a68c309}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="plugins\hello_triangle_plugin.h">
+      <Filter>plugins\01</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\texture_plugin.h">
+      <Filter>plugins\02</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\threed_plugin.h">
+      <Filter>plugins\03</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\camera.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\plugin.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="plugins\shader.h">
+      <Filter>plugins</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
