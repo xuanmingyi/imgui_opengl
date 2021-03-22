@@ -72,9 +72,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>plugins;libs\glfw\include;libs\gl3w;include\imstb;include\imgui;include;$(IncludePath)</IncludePath>
-    <SourcePath>include\imgui;plugins;include\imstb;include;libs\gl3w\GL;$(SourcePath)</SourcePath>
-    <LibraryPath>libs\glfw\lib-vc2010-32;$(LibraryPath)</LibraryPath>
+    <IncludePath>libs\glfw\include;libs\gl3w;imstb;imgui;$(IncludePath)</IncludePath>
+    <SourcePath>imgui;imstb;$(SourcePath)</SourcePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -92,14 +92,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>libs\glfw\include;libs\gl3w;plugins;include\imstb;include\imgui;include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\sin\source\repos\imgui_opengl\libs\glfw\lib-vc2010-64;libs\glfw\lib-vc2010-32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>libs\glfw\lib-vc2010-32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,20 +145,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="plugins\hello_triangle_plugin.cpp" />
-    <ClCompile Include="plugins\plugin.cpp" />
-    <ClCompile Include="plugins\shader.cpp" />
-    <ClCompile Include="plugins\texture_plugin.cpp" />
-    <ClCompile Include="plugins\threed_plugin.cpp" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="hello_triangle_plugin.h" />
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui_impl_glfw.h" />
+    <ClInclude Include="imgui_impl_opengl3.h" />
+    <ClInclude Include="imstb\imstb_rectpack.h" />
+    <ClInclude Include="imstb\imstb_textedit.h" />
+    <ClInclude Include="imstb\imstb_truetype.h" />
+    <ClInclude Include="libs\gl3w\GL\gl3w.h" />
+    <ClInclude Include="libs\gl3w\GL\glcorearb.h" />
+    <ClInclude Include="libs\glfw\include\GLFW\glfw3.h" />
+    <ClInclude Include="libs\glfw\include\GLFW\glfw3native.h" />
+    <ClInclude Include="plugin.h" />
+    <ClInclude Include="shader.h" />
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="texture_plugin.h" />
+    <ClInclude Include="threed_plugin.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="plugins\camera.h" />
-    <ClInclude Include="plugins\hello_triangle_plugin.h" />
-    <ClInclude Include="plugins\plugin.h" />
-    <ClInclude Include="plugins\shader.h" />
-    <ClInclude Include="plugins\texture_plugin.h" />
-    <ClInclude Include="plugins\threed_plugin.h" />
+    <ClCompile Include="hello_triangle_plugin.cpp" />
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_tables.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="imgui_impl_glfw.cpp" />
+    <ClCompile Include="imgui_impl_opengl3.cpp" />
+    <ClCompile Include="libs\gl3w\GL\gl3w.c" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="shader.cpp" />
+    <ClCompile Include="texture_plugin.cpp" />
+    <ClCompile Include="threed_plugin.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
